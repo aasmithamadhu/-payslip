@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payslip History</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #17243d;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+     /*sidebar*/
+       .sidebar {
+      width: 300px;
+      min-height: 100vh;
+      background: #00102e;
+      color: white;
+      padding: 35px 18px;
+      flex-shrink: 0;
+    }
+    .logo {
+      font-size: 22px;
+      color:#ddd;
+      font-weight: 700;
+      margin: 10px 18px 45px;
+    }
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    
+    .nav-item {
+      padding: 20px  10px;
+      border-radius: 7px;
+      color: #d6deec;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background: #102446;
+      padding: auto;
+    }
+
+    .nav-item.active {
+      background: #172a4b;
+      color: white;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px 45px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: #ffc400;
+      color: #071738;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .brand-name {
+    color: #FFC107;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+ .product-name {
+      padding: 0 14px;
+      margin-top: -22px;
+      margin-bottom: 25px;
+    }
+
+    .product-name h2 {
+      color: #ffc400;
+      font-size: 25px;
+      margin-bottom: 2px;
+    }
+
+    .product-name span {
+      color: #ddd;
+      font-size: 14px;
+      letter-spacing: .5px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .menu-item {
+      height: 48px;
+      padding: 0 17px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 13px;
+      font-size: 16px;
+      transition: .2s;
+    }
+
+    .menu-item i {
+      width: 18px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 196, 0, .15);
+    }
+
+    .menu-item.active {
+      background: #ffc400;
+      color: #071738;
+    }
+    
+   
+    /*main*/
+       .main {
+      flex: 1;
+      min-width: 0;
+    }
+/*top header*/
+     header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    .company-logo {
+    width: 61px;
+    height: 61px;
+    border: 1px solid #39c96b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0c8e40;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+}
+
+        header input {
+            width: 520px;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 30px;
+            background: #eef2f7;
+            font-size: 15px;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            right:50px;
+        }
+
+        .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            right: 15px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .top h1 {
+            font-size: 46px;
+            color: #0a2045;
+            position: relative;
+            left: 70px;
+        }
+
+        .top p {
+            margin-top: 10px;
+            color: #666;
+            line-height: 28px;
+            position: relative;
+            left: 70px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 18px;
+            width: 220px;
+            position: relative;
+            right: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+        }
+
+        .card h2 {
+            margin: 12px 0;
+            color: #0a2045;
+        }
+        .card p{
+            margin: 12px 0;
+            position: relative;
+            right: 350px;
+        }
+
+        .line {
+            height: 4px;
+            width: 70%;
+            background: #ffc400;
+            margin-top: 18px;
+        }
+
+/* ================= FILTERS ================= */
+.filter-box {
+            margin: 0 40px;
+            background: #fff;
+            padding: 28px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-end;
+            gap: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        .field label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+     }
+        .field i{
+            font-size: 13px;
+            position: relative;
+            top: 30px;
+            left: 30px;
+        }
+        .field select,
+        .field input {
+            height: 46px;
+            border: none;
+            background: #f5f7fb;
+            border-radius: 12px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 15px;
+        }
+        .date-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 12px;
+    }
+
+    .date-field input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      color: #697386;
+      font-size: 14px;
+    }
+
+    .calendar {
+      font-size: 20px;
+      color: #697386;
+    }
+
+        .apply-btn {
+            background: #082b63;
+            color: #fff;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+        }
+         .apply-btn:hover {
+            background: #103d86;
+        }
+
+        .reset-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 14px;
+            background: #f2f2f2;
+            cursor: pointer;
+            font-size: 20px;
+        }
+/* ================= TABLE ================= */
+
+.table-container {
+    margin: 0 30px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #e1e3e7;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #e4e6ea;
+}
+
+th {
+    height: 64px;
+    text-align: left;
+    padding: 0 25px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4c515a;
+}
+
+td {
+    height: 82px;
+    padding: 0 25px;
+    border-top: 1px solid #e7e8eb;
+    font-size: 14px;
+}
+ td:first-child {
+            display: flex;
+            align-items: center;
+            gap:10px;
+        }
+       td img{
+        font-size: medium;
+        display: flex;
+
+       }
+
+/* EMPLOYEE */
+
+.employee {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.employee strong {
+    display: block;
+    font-size: 14px;
+}
+
+.employee small {
+    display: block;
+    color: #555b65;
+    font-size: 11px;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #263e52;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    left: 10px;
+}
+
+.avatar.female {
+    background: #76595a;
+}
+
+
+/* AMOUNT */
+
+.amount {
+    color: #002f68;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* STATUS */
+
+.status {
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.status.delivered {
+    background: #fff2c7;
+    color: #8b6900;
+}
+
+.status.pending {
+    background: #e4e6e9;
+    color: #555b63;
+}
+
+.status.failed {
+    background: #fff0f0;
+    color:#c90000;
+}
+
+
+/* ACTIONS */
+
+.actions {
+    display: flex;
+    gap:100px;
+    color: #00316b;
+    font-size: 18px;
+}
+
+.actions i {
+    cursor: pointer;
+}
+
+.actions i:hover {
+    transform: scale(1.15);
+}
+/* Footer */
+
+.table-footer {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10 25px;
+    position: relative;
+    top: 50px;
+    font-size: 10px;
+}
+
+.table-footer p {
+    color: #4d5158;
+    font-size: 16px;
+    
+}
+
+ /* Pagination */
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    
+}
+
+.pagination button {
+    width: 33px;
+    height: 33px;
+    border: 1px solid #ccd2da;
+    background: white;
+    border-radius: 8px;
+    color: #252b34;
+    cursor: pointer;
+    position: relative;
+    left: 5px;
+}
+
+.pagination button.selected {
+    background: #002c61;
+    color: white;
+    border-color: #002c61;
+}
+
+.pagination button:hover {
+    background: #002c61;
+    color: white;
+}
+
+/* Bottom Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+}
+
+/* Export Card */
+
+.export-card {
+    height: 225px;
+    background: #002b61;
+    border-radius: 16px;
+    position: relative; 
+
+    overflow: hidden;
+    color: white;
+}
+
+.card-content {
+    padding: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.card-content h2,
+.schedule-card h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+    position: relative;
+    left: 30px;
+}
+
+.card-content p,
+.schedule-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 390px;
+    color: #e3e9f1;
+    
+}
+
+.report-btn {
+    margin-top: 25px;
+    background: #ffc400;
+    color: #002b61;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 23px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.report-btn i {
+    margin-right: 8px;
+}
+
+.report-btn:hover {
+    background: #ffd33d;
+}
+
+/* Background Document */
+
+.document-icon {
+    position: absolute;
+    right: -10px;
+    bottom: -40px;
+    font-size: 145px;
+    opacity: 0.13;
+}
+
+/* Schedule Card */
+
+.schedule-card {
+    height: 225px;
+    border-radius: 16px;
+    background: #e9edf2;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.schedule-card h2 {
+    color: #002b61;
+}
+
+.schedule-card p {
+    color: #4c5159;
+    max-width: 390px;
+}
+
+.schedule-card a {
+    display: inline-block;
+    margin-top: 24px;
+    text-decoration: none;
+    color: #002b61;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.schedule-card a i {
+    margin-left: 7px;
+}
+
+/* Clock */
+
+.clock {
+    width: 130px;
+    height: 130px;
+    min-width: 130px;
+    border: 4px dashed #c8cdd6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.clock i {
+    font-size: 40px;
+    color: #b7bdc8;
+}
+
+
+        @media(max-width:900px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cards {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .filter {
+                grid-template-columns: 1fr;
+            }
+
+            header input {
+                width: 100%;
+            }
+        }
+     /* Responsive */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main {
+        width: calc(100% - 200px);
+        padding: 0 25px 40px;
+    }
+
+    .table-row {
+        grid-template-columns: 1.3fr 1fr 0.8fr 0.8fr;
+    }
+
+    .actions {
+        grid-column: 4;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .main {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    .table-row {
+        min-width: 850px;
+    }
+
+    .table-footer {
+        min-width: 850px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-card {
+        height: auto;
+    }
+
+    .clock {
+        display: none;
+    }
+}   
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+           <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-table-list"></i>
+        </div>
+              <div class="brand-name">VIS</div>
+           </div>
+
+              <div class="product-name">
+             <h2>PaySlip</h2>
+                <span>Management</span>
+            </div>
+
+            <nav class="menu">
+         <a href="Dashboard.html" class="menu-item">
+          <i class="fa-solid fa-border-all"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="Employees Directory.html" class="menu-item">
+          <i class="fa-solid fa-users"></i>
+          <span>Employees</span>
+        </a>
+
+        <a href="Generate payslips.html" class="menu-item">
+          <i class="fa-regular fa-money-bill-1"></i>
+          <span>Generate Payslip</span>
+        </a>
+
+        <a href="Payslip History.html" class="menu-item active">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>Payslip History</span>
+        </a>
+
+        <a href="Email Log.html" class="menu-item ">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Email Log</span>
+        </a>
+          
+            </nav>
+
+        </aside>
+     <!-- Main -->
+
+        <main>
+
+            <header>
+             <img src="image.jfif" class="company-logo">
+                    
+                <input type="text" placeholder="Search employees or reports...">
+
+                <div class="user">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <div>
+                    <h3>Admin User</h3>
+                        <small>Super Admin</small>
+                    </div>
+                <img src="https://i.pravatar.cc/50?img=60" alt="admin">
+                </div>
+    </header>
+    
+
+
+            <section class="top">
+
+                <div>
+
+                    <h1>Payslip History</h1>
+
+                    <p>
+                        Review and manage all historical payroll<br>
+                        disbursements across the organization.
+                    </p>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <small>SUCCESSFUL</small>
+
+                        <h2>99.8%</h2>
+
+                        <div class="line"></div>
+
+                    </div>
+
+                    <div class="card">
+
+                        <small>PENDING SIGNATURES</small>
+
+                        <h2>12</h2>
+
+                        <small>Requiring <br>
+                    employee action</small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- Filters -->
+            <section class="filter-box">
+
+                <div class="field">
+                    <label>Department</label><br>
+
+                    <select>
+                        <option>All Departments</option>
+                        <option>Engineer</option>
+                        <option>Marketing</option>
+                        <option>sales</option>
+                        <option>Design</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Status</label><br>
+
+                    <select>
+                        <option>All Status</option>
+                        <option>Delivered</option>
+                        <option>pending</option>
+                        <option>failed</option>
+                    </select>
+                </div>
+
+                <div class="field"><br>
+                    <label>Date Range</label>
+                      <i class="fa-solid fa-calendar-days"> select dates</i>
+                    <input type="text">
+                    
+                </div>
+
+                <div class="field">
+                    <label>Min. Amount</label><br>
+
+                    <input type="number" placeholder="eg.5000">
+                </div>
+
+                <button class="apply-btn">
+                    <i class="fa-solid fa-filter"></i>
+                    Apply
+                </button>
+
+                <button class="reset-btn">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+
+            </section>
+
+            <!-- Table -->
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th></th>
+                        <th>Employee</th>
+                        <th>Pay Period</th>
+                        <th>Net<br> Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                           <div class="employee-cell">
+                        <img src="https://i.pravatar.cc/50?img=10" alt="avatar" class="avatar">
+                        
+                     <div class="employee">
+                        <td>Johnathan<br>
+                            Doe<br>
+                        <span>Engineer</span>
+                        </td>
+                        </div>
+                    
+                        <td>October 2023</td>
+
+                        <td class="amount">₹8,450.00</td>
+
+                        <td>
+                            <span class="status delivered">● Delivered</span></td>
+
+                        <td>
+                            <i class="fa-solid fa-eye"></i>
+
+                            <i class="fa-solid fa-download"></i>
+                
+                            <i class="fa-solid fa-pen"></i>
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                        </td>
+                        </div>
+                   
+
+                    <tr>
+                    <td>
+                        <div class="employee-cell">
+                        <img src="https://i.pravatar.cc/50?img=20" alt="avatar" class="avatar">
+                           </div>
+                       <div class="employee">
+                        <td>Sarah Miller<br>
+                        <span>Marketing</span>
+                                           
+                        </div>
+                    </td>
+                      <td>October 2023</td>
+
+                        <td class="amount">₹5,200.50</td>
+
+                        <td><span class="status pending">●pending</span></td>
+
+                        <td>
+                            <i class="fa-solid fa-eye"></i>
+
+                            <i class="fa-solid fa-download"></i>
+
+                            <i class="fa-solid fa-pen"></i>
+
+                            <i class="fa-regular fa-envelope"></i>
+                        </td>
+                        </div>
+                        
+                    
+                 <tr>
+                    <td>
+                     <div class="employee-cell">                     
+                        <img src="https://i.pravatar.cc/50?img=30" alt="avatar" class="avatar">
+                     </div><br>
+                         <div class ="employee">
+                         
+                        <td>Robert white<br>
+                        <span>sales</span>
+                        </div>
+                        </td>
+                      <td>October 2023</td>
+
+                        <td class="amount">₹7,890.00</td>
+
+                        <td><span class="status failed">●Failed</span></td>
+
+                        <td>
+                            <i class="fa-solid fa-eye"></i>
+
+                            <i class="fa-solid fa-download"></i>
+
+                            <i class="fa-solid fa-pen"></i>
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                        </td>
+                         </div>
+
+                      <tr>
+                    <td>
+                        <div class="employee-cell">
+                            
+                        <img src="https://i.pravatar.cc/50?img=40" alt="avatar" class="avatar">
+                        </div>
+
+                        
+                        <div class="employee">
+                        <td>Emily Lo<br>
+                        <span>Design</span>
+                        </div>
+                        </td>
+                      <td>September 2023</td>
+
+                        <td class="amount">₹6,120.00</td>
+
+                        <td><span class="status delivered">●Delivered</span></td>
+
+                        <td>
+                            <i class="fa-solid fa-eye"></i>
+
+                            <i class="fa-solid fa-download"></i>
+
+                            <i class="fa-solid fa-pen"></i>
+                            
+                            <i class="fa-regular fa-envelope"></i>
+                          </td>
+                        </div>  
+                </tbody>
+
+            </table>
+         <!-- Bottom Table -->
+            <div class="table-footer">
+                <p>Showing 1 to 4 of 284 results</p>
+
+                <div class="pagination">
+                    <button><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="selected">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>...</button>
+                    <button><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Bottom Cards -->
+        <section class="cards">
+
+            <!-- Export Card -->
+            <div class="export-card">
+                <div class="card-content">
+                    <h2>Need Bulk Export?</h2>
+
+                    <p>
+                        Download full payroll reports in CSV or XLSX
+                        format for external accounting audits.
+                    </p>
+
+                    <button class="report-btn">
+                        <i class="fa-regular fa-file-lines"></i>
+                        Generate Report
+                    </button>
+                </div>
+
+                <div class="document-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+            </div>
+
+
+            <!-- Automated Payout Card -->
+            <div class="schedule-card">
+
+                <div>
+                    <h2>Automated Payouts</h2>
+
+                    <p>
+                        Schedule your next payroll run to happen
+                        automatically on the 25th of each month.
+                    </p>
+
+                    <a href="#">
+                        Manage Schedules
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="clock">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script>
+
+            // Sidebar Active Menu
+            const menuItems = document.querySelectorAll(".sidebar ul li");
+
+            menuItems.forEach(item => {
+                item.addEventListener("click", function () {
+
+                    menuItems.forEach(i => i.classList.remove("active"));
+                    this.classList.add("active");
+
+                });
+            });
+
+
+            // Search Employee
+            const searchBox = document.querySelector("header input");
+
+            if (searchBox) {
+
+                searchBox.addEventListener("keyup", function () {
+
+                    let value = this.value.toLowerCase();
+
+                    let rows = document.querySelectorAll("tbody tr");
+
+                    rows.forEach(row => {
+
+                        let employee = row.cells[0].innerText.toLowerCase();
+
+                        if (employee.includes(value)) {
+
+                            row.style.display = "";
+
+                        } else {
+
+                            row.style.display = "none";
+
+                        }
+
+                    });
+
+                });
+
+            }
+
+
+            // Apply Filter
+            const applyBtn = document.querySelector(".filter button");
+
+            if (applyBtn) {
+
+                applyBtn.addEventListener("click", function () {
+
+                    const department = document.querySelectorAll(".filter select")[0].value;
+
+                    const status = document.querySelectorAll(".filter select")[1].value;
+
+                    const date = document.querySelector(".filter input[type='date']").value;
+
+                    const amount = document.querySelector(".filter input[type='number']").value;
+
+                    alert(
+                        "Filters Applied\n\n" +
+                        "Department : " + department +
+                        "\nStatus : " + status +
+                        "\nDate : " + date +
+                        "\nMinimum Amount : " + amount
+                    );
+
+                });
+
+            }
+
+
+            // Reset Filters
+            const resetBtn = document.querySelector(".reset");
+
+            if (resetBtn) {
+
+                resetBtn.addEventListener("click", function () {
+
+                    document.querySelectorAll(".filter select").forEach(select => {
+                        select.selectedIndex = 0;
+                    });
+
+                    document.querySelectorAll(".filter input").forEach(input => {
+                        input.value = "";
+                    });
+
+                    alert("Filters Reset");
+
+                });
+
+            }
+
+
+            // Table Action Buttons
+            const rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+
+                const icons = row.querySelectorAll("i");
+
+                // View
+                icons[0].addEventListener("click", function () {
+
+                    alert("Viewing Payslip of " + row.cells[0].innerText);
+
+                });
+
+                // Download
+                icons[1].addEventListener("click", function () {
+
+                    alert("Downloading Payslip...");
+
+                });
+
+                // Email
+                icons[2].addEventListener("click", function () {
+
+                    alert("Payslip Sent to Employee");
+
+                });
+
+            });
+
+
+            // Profile Click
+            const profile = document.querySelector(".user img");
+
+            if (profile) {
+
+                profile.addEventListener("click", function () {
+
+                    alert("Admin User\nSuper Admin");
+
+                });
+
+            }
+
+
+            // Settings Icon
+            const setting = document.querySelector(".fa-gear");
+
+            if (setting) {
+
+                setting.addEventListener("click", function () {
+
+                    alert("Settings Page");
+
+                });
+
+            }
+ // Run this block after your dashboard content finishes loading
+document.addEventListener("DOMContentLoaded", () => {
+    // Strips out horizontal overflow behavior from the document view frame
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+});
+        </script>
+</body>
+
+</html>

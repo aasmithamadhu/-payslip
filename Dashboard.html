@@ -1,0 +1,1282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+ <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family:'Poppins', sans-serif;
+            box-sizing: border-box;
+        
+        }
+         body {
+      background: #f5f7fb;
+       color: #17243d;
+        }
+
+/*========================
+Container
+=========================*/
+        .container {
+        display: flex;
+        min-height: 100vh;
+        }     
+/*========================
+Sidebar
+=========================*/
+.sidebar {
+    width: 300px;
+    background: #07112d;
+    color: #fff;
+    padding: 35px 18px;
+    min-height:110vh;
+    flex-shrink: 0;
+        
+        }
+   .logo {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 10px 18px 45px;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-item {
+      padding: 13px 18px;
+      border-radius: 7px;
+      color: #d6deec;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background: #102446;
+    }
+
+    .nav-item.active {
+      background: #172a4b;
+      color: white;
+    }
+
+    .logout {
+      margin-top: auto;
+      border-top: 1px solid #53627b;
+      padding: 30px 18px 5px;
+      font-size: 15px;
+      display: flex;
+      gap: 30px;
+      align-items:center;
+}
+  .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px 45px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: #ffc400;
+      color: #071738;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .brand-name {
+    color: #FFC107;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .product-name {
+      padding: 0 14px;
+      margin-top: -22px;
+      margin-bottom: 25px;
+    }
+
+    .product-name h2 {
+      color: #ffc400;
+      font-size: 25px;
+      margin-bottom: 2px;
+    }
+
+    .product-name span {
+      color: #ddd;
+      font-size: 14px;
+      letter-spacing: .5px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .menu-item {
+      height: 48px;
+      padding: 0 17px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 13px;
+      font-size: 16px;
+      transition: .2s;
+    }
+
+    .menu-item i {
+      width: 18px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 196, 0, .15);
+    }
+
+    .menu-item.active {
+      background: #ffc400;
+      color: #071738;
+    } 
+  /* Logout area */
+.logout-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 16px 25px;
+}
+
+/* Horizontal line */
+.logout-section::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 0 25px;
+}
+
+/* Logout button */
+.logout-btn {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Logout icon */
+.logout-icon {
+    font-size: 25px;
+    line-height: 1;
+}
+
+/* Hover */
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.logout {
+      margin-top: 250px;
+      border-top: 1px solid #ffff;
+      padding: 20px 18px 5px;
+      padding-bottom: 50px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      gap: 140px;
+      align-items: center;
+}
+
+.logout span {
+    font-size: 20px;
+    color: #fff;
+    margin-right: 12px;
+    }
+.logout-btn i {
+    font-size: 19px;
+}
+
+/*========================
+    Main
+=========================*/
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+/*========================
+ Top Bar
+=========================*/
+        .topbar {
+            background: #fff;
+            border-radius: 18px;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
+        }
+
+    .company-logo {
+    width: 61px;
+    height: 61px;
+    border: 1px solid #39c96b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0c8e40;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.search-box {
+            width: 520px;
+            height: 48px;
+            border-radius: 30px;
+            background: #f4f6fb;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            margin-left: 10px;
+            font-size: 15px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .settings {
+            font-size: 22px;
+        }
+       .user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        } 
+       
+        
+        /*========================
+            Heading
+=========================*/
+        .heading {
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .heading h1 {
+            font-size: 46px;
+            color: #0b1738;
+        }
+
+        .heading p {
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .btn {
+            background: #ffc107;
+            border: none;
+            color: #111;
+            padding: 16px 28px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ffb300;
+        }
+
+        /*========================
+Cards
+=========================*/
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 24px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, .05);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .employee {
+            background: #f3f3f3;
+        }
+
+        .file {
+            background: #fff7d8;
+        }
+
+        .calendar {
+            background: #dbe9ff;
+        }
+
+        .mail {
+            background: #ffe1e1;
+        }
+
+
+        .green {
+            color: #1aa64b;
+            font-weight: 600;
+        }
+
+        .card h4 {
+            margin-top: 18px;
+            color: #555;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .card h2 {
+            font-size: 52px;
+            margin-top: 10px;
+            color: #0b1738;
+        }
+
+        /*========================
+Chart
+=========================*/
+        .chart-box {
+            background: #fff;
+            margin-top: 35px;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .05);
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title h2 {
+            font-size: 36px;
+        }
+
+        .title p {
+            color: #777;
+        }
+
+        .title button {
+            border: none;
+            background: #f5f5f5;
+            padding: 12px 22px;
+            border-radius: 10px;
+        }
+
+        .chart {
+            margin-top: 30px;
+        }
+
+        .chart h3 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .bars {
+            height: 280px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .bar {
+            width: 20px;
+            background: #ffc107;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .months {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 15px;
+            color: #555;
+        }
+
+        /*========================
+Recent Table
+=========================*/
+        .recent {
+            margin-top: 35px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .05);
+        }
+
+        .recent-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .recent-header button {
+            border: none;
+            background: #f4f4f4;
+            padding: 12px 18px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #fff;
+            color: #111;
+            padding: 16px;
+            text-align: left;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+        }
+    .employee {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .employee-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .blue-avatar {
+      background: #d4e4ff;
+      color: #31568c;
+    }
+
+    .yellow-avatar {
+      background: #ffdc82;
+      color: #715500;
+    }
+    .employee-name {
+      font-weight: 600;
+      color: #292d34;
+    }
+
+
+        .td span{
+            font-size: 50px;
+            color: #000;
+        }
+
+
+        tr:hover {
+            background: #fafafa;
+        }
+        .amount {
+    color: #002f68;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+
+.status {
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+        .Generated {
+            background: #d4f4d4;
+            padding: 10px;
+            color: #1b8c3d;
+            font-size: 15px;
+        }
+
+        .pending {
+            background: #fff;
+            color: #a36a00;
+            font-size:15px;
+        }
+
+        /* Eye Icon */
+
+        .action-icon {
+            font-size: 30px;
+            color: #555;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .action-icon:hover {
+            color: #000;
+            transform: scale(1.15);
+        }
+
+
+        /* Footer */
+
+        .footer-link {
+            text-align: center;
+            padding: 28px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-link a {
+            text-decoration: none;
+            color: #111827;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .footer-link a:hover {
+            color: #4f46e5;
+        }
+
+        /* Responsive */
+
+        @media(max-width:900px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .recent-payslips {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 900px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+
+            .export-btn {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .section-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .section-header h2 {
+                font-size: 22px;
+            }
+
+        }
+
+        /*========================
+Responsive
+=========================*/
+        @media(max-width:1100px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .heading {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .search-box {
+                width: 300px;
+            }
+
+        }
+
+        @media(max-width:768px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .heading h1 {
+                font-size: 34px;
+            }
+
+            .card h2 {
+                font-size: 40px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+         <aside class="sidebar">
+
+
+        <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-table-list"></i>
+        </div>
+        <div class="brand-name">VIS</div>
+      </div>
+                   <div class="product-name">
+                    
+                    <h2>PaySlip</h2>
+                    <span>Management</span>
+                </div>
+                
+            <nav class="menu">
+
+                
+                    <a href="Dashboard.html" class ="menu-item active">
+                    <i class="fa-solid fa-border-all"></i>
+                  <span> Dashboard</span>  
+                    
+                  <a href="Employees Directory.html" class="menu-item">
+                        <i class="fa-solid fa-users"></i>
+                     <span>Employees</span>  
+                    
+                
+                    <a href="Generate payslips.html" class="menu-item">
+                        <i class="fa-regular fa-money-bill-1"></i>
+                       <span> Generate Payslip</span>
+                
+
+            
+                    <a href="Payslip History.html" class="menu-item">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                     <span>Payslip History</span>   
+                    
+                       <a href="Email Log.html" class="menu-item">
+                        <i class="fa-solid fa-envelope"></i>
+                          <span>Email Log</span> 
+                    </a>
+                
+                <div class="logout-section">
+                <a href="#" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                   <span> Logout</span>
+                </a>
+            </div>
+        </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+
+            <!-- Top Header -->
+            <header class="topbar">
+
+                <img src="image.jfif" class="company-logo">
+                       
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search employees or reports...">
+                </div>
+
+                <div class="header-right">
+
+                    <i class="fa-solid fa-gear settings"></i>
+
+                    <div class="user">
+
+                        <div>
+                            <h4>Admin User</h4>
+                            <p>Super Admin</p>
+                        </div>
+                         <img src="https://i.pravatar.cc/50?img=60" alt="admin">   
+        </div>
+                     
+</header>
+
+            <!-- Heading -->
+            <section class="heading">
+
+                <div>
+
+                    <h1>Enterprise Overview</h1>
+
+                    <p>
+                        Welcome back. Here is what happened with VIS today.
+                    </p>
+
+                </div>
+
+                <button class="btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Generate New Payslip
+                </button>
+
+            </section>
+
+            <!-- Cards -->
+            <section class="cards">
+
+                <div class="card">
+
+                    <div class="card-top">
+                        <div class="icon employee">
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+                        <span class="green">+12%</span>
+                    </div>
+
+                    <h4>TOTAL EMPLOYEES</h4>
+
+                    <h2>1,284</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <div class="icon file">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+
+                        <span>Total</span>
+
+                    </div>
+
+                    <h4>TOTAL PAYSLIPS</h4>
+
+                    <h2>45,920</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <div class="icon calendar">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+
+                        <span>In Progress</span>
+
+                    </div>
+
+                    <h4>THIS MONTH</h4>
+
+                    <h2>1,150</h2>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <div class="icon mail">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+
+                        <span class="green">99.9%</span>
+
+                    </div>
+
+                    <h4>EMAILS SENT</h4>
+
+                    <h2>12,402</h2>
+
+                </div>
+
+            </section>
+
+            <!-- Monthly Chart -->
+            <section class="chart-box">
+
+                <div class="title">
+
+                    <div>
+                        <h2>Monthly Payslip Chart</h2>
+
+                        <p>
+                            Volume of payroll distributions over the last 6 months
+                        </p>
+                    </div>
+
+                    <button>Last 6 Months</button>
+
+                </div>
+
+                <div class="chart">
+
+                    <h3>Payslips Overview</h3>
+
+                    <div class="bars">
+
+                        <div class="bar" style="height:40px"></div>
+                        <div class="bar" style="height:60px"></div>
+                        <div class="bar" style="height:90px"></div>
+                        <div class="bar" style="height:130px"></div>
+                        <div class="bar" style="height:120px"></div>
+                        <div class="bar" style="height:170px"></div>
+                        <div class="bar" style="height:140px"></div>
+                        <div class="bar" style="height:110px"></div>
+                        <div class="bar" style="height:70px"></div>
+                        <div class="bar" style="height:60px"></div>
+                        <div class="bar" style="height:80px"></div>
+                        <div class="bar" style="height:50px"></div>
+
+                    </div>
+
+                    <div class="months">
+
+                        <span>Jan</span>
+                        <span>Feb</span>
+                        <span>Mar</span>
+                        <span>Apr</span>
+                        <span>May</span>
+                        <span>Jun</span>
+                        <span>Jul</span>
+                        <span>Aug</span>
+                        <span>Sep</span>
+                        <span>Oct</span>
+                        <span>Nov</span>
+                        <span>Dec</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Recent Payslips -->
+            <section class="recent">
+
+                <div class="recent-header">
+
+                    <h2>Recent Payslips</h2>
+
+                    <button>
+                        <i class="fa-solid fa-download"></i>
+
+                              Export
+
+                    </button>
+
+                </div>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th></th>
+                            <th>EMPLOYEE</th>
+                            <th>REFERENCE <br>
+                                ID</th>
+                            <th>AMOUNT</th>
+                            <th>Status</th>
+
+                            <th>DATE<br> 
+                                 GENERATED</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                         <td>
+                            <div class="employee">
+
+                <div class="employee-avatar blue-avatar">
+                  JD
+                </div>  
+                         </td>
+                            <td>John Smith</td>
+                          
+                            <td>pay2023-8942</td>
+                            <td class="amount">₹6,450.00 </td>
+                            <td><span class="status Generated">●Generated</span></td>
+                            <td>Oct12,2023</td>
+                            <td>
+                                <i class="fa-solid fa-eye"></i>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            <div class="employee">
+
+                <div class="employee-avatar yellow-avatar">
+                  PS
+                </div>    
+                         </td>
+                            <td>Priya Sharma</td>
+                            <td>Pay2023-8943</td>
+                            <td class="amount">₹5,200.00</td>
+                            <td><span class="status pending">●pending</span></td>
+                            
+                            <td>Oct14,2023</td>
+                            <td>
+                                <i class="fa-solid fa-eye"></i>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            <div class="employee">
+
+                <div class="employee-avatar blue-avatar">
+                                RK
+                </div>    
+                         </td>
+                         <div class="employee-name">
+                            <td>Rahul Kumar</td>
+                            <td>pay2023-8944</td>
+                            <td class="amount">₹7,100.00</td>
+                            <td><span class="status Generated">●Generated</span></td>    
+                            <td>Oct14,2023</td>
+                            <td>
+                                <i class="fa-solid fa-eye"></i>
+                            </td>
+                         </div>
+                        </tr>
+
+
+                    </tbody>
+
+                </table><br><br>
+
+                <div class="footer-link">
+                    <a href="#"> View All Generated Payslips </a>
+                </div>
+
+            </section>
+
+        </main>
+
+        <script>
+           
+                
+
+            // =============================
+            // Live Date & Time
+            // =============================
+            function updateDateTime() {
+
+                const date = new Date();
+
+                const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                };
+
+                const today = document.getElementById("today");
+
+                if (today) {
+                    today.innerHTML =
+                        date.toLocaleDateString("en-IN", options) +
+                        " | " +
+                        date.toLocaleTimeString();
+                }
+
+            }
+
+            setInterval(updateDateTime, 1000);
+
+            // =============================
+            // Generate Payslip Button
+            // =============================
+            const btn = document.querySelector(".btn");
+
+            if (btn) {
+
+                btn.addEventListener("click", function () {
+
+                    alert("New Payslip Generated Successfully!");
+
+                });
+
+            }
+
+            // =============================
+            // Sidebar Active Menu
+            // =============================
+            const menus = document.querySelectorAll(".menu li");
+
+            menus.forEach(item => {
+
+                item.addEventListener("click", function () {
+
+                    menus.forEach(i => i.classList.remove("active"));
+
+                    this.classList.add("active");
+
+                });
+
+            });
+
+            // =============================
+            // Search Employees
+            // =============================
+            const search = document.querySelector(".search-box input");
+
+            if (search) {
+
+                search.addEventListener("keyup", function () {
+
+                    let value = this.value.toLowerCase();
+
+                    document.querySelectorAll("tbody tr").forEach(row => {
+
+                        row.style.display = row.innerText.toLowerCase().includes(value)
+                            ? "" : "none";
+
+                    });
+
+                });
+
+            }
+
+            // =============================
+            // Animate Cards
+            // =============================
+            function animateCards() {
+
+                document.querySelectorAll(".card").forEach((card, index) => {
+
+                    card.style.opacity = "0";
+                    card.style.transform = "translateY(40px)";
+
+                    setTimeout(() => {
+
+                        card.style.transition = "0.6s";
+                        card.style.opacity = "1";
+                        card.style.transform = "translateY(0)";
+
+                    }, index * 200);
+
+                });
+
+            }
+
+            // =============================
+            // Animate Chart Bars
+            // =============================
+            function animateChart() {
+
+                const bars = document.querySelectorAll(".bar");
+
+                bars.forEach(bar => {
+
+                    let finalHeight = bar.style.height;
+
+                    bar.style.height = "0px";
+
+                    setTimeout(() => {
+
+                        bar.style.transition = "1s";
+
+                        bar.style.height = finalHeight;
+
+                    }, 400);
+
+                });
+
+            }
+
+            // =============================
+            // Export Button
+            // =============================
+            const exportBtn = document.querySelector(".recent-header button");
+
+            if (exportBtn) {
+
+                exportBtn.onclick = function () {
+
+                    alert("Payslip Report Exported Successfully.");
+
+                };
+
+            }
+
+            // =============================
+            // Dashboard Card Hover Effect
+            // =============================
+            document.querySelectorAll(".card").forEach(card => {
+
+                card.addEventListener("mouseenter", () => {
+
+                    card.style.transform = "translateY(-8px)";
+                    card.style.transition = ".3s";
+
+                });
+
+                card.addEventListener("mouseleave", () => {
+
+                    card.style.transform = "translateY(0px)";
+
+                });
+
+            });
+
+            // =============================
+            // Logout
+            // =============================
+            const logout = document.querySelector(".logout");
+
+            if (logout) {
+
+                logout.addEventListener("click", function (e) {
+
+                    e.preventDefault();
+
+                    let result = confirm("Do you want to Logout?");
+
+                    if (result) {
+
+                        window.location.reload();
+
+                    }
+
+                });
+
+            }
+
+            // =============================
+            // Counter Animation
+            // =============================
+            function counter(id, target) {
+
+                let element = document.getElementById(id);
+
+                if (!element) return;
+
+                let count = 0;
+
+                let speed = target / 100;
+
+                let interval = setInterval(() => {
+
+                    count += Math.ceil(speed);
+
+                    if (count >= target) {
+
+                        count = target;
+
+                        clearInterval(interval);
+
+                    }
+
+                    element.innerHTML = count.toLocaleString();
+
+                }, 20);
+
+            }
+
+            counter("emp", 1284);
+            counter("pay", 45920);
+            counter("month", 1150);
+            counter("mail", 12402);
+        </script>
+</body>
+
+</html>

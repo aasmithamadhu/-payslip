@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees Directory</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #17243d;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+/* Sidebar */
+   .sidebar {
+      width: 300px;
+      min-height: 100vh;
+      background: #00102e;
+      color: white;
+      padding: 35px 18px;
+      flex-shrink: 0;
+    }
+    .logo {
+      font-size: 22px;
+      color:#ddd;
+      font-weight: 700;
+      margin: 10px 18px 45px;
+    }
+    
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+
+    .nav-item {
+      padding: 20px  10px;
+      border-radius: 7px;
+      color: #d6deec;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background: #102446;
+      padding: auto;
+    }
+
+    .nav-item.active {
+      background: #172a4b;
+      color: white;
+    }
+
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px 45px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: #ffc400;
+      color: #071738;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .brand-name {
+    color: #FFC107;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .product-name {
+      padding: 0 14px;
+      margin-top: -22px;
+      margin-bottom: 25px;
+    }
+
+    .product-name h2 {
+      color: #ffc400;
+      font-size: 25px;
+      margin-bottom: 2px;
+    }
+
+    .product-name span {
+      color: #ddd;
+      font-size: 14px;
+      letter-spacing: .5px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .menu-item {
+      height: 48px;
+      padding: 0 17px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 13px;
+      font-size: 16px;
+      transition: .2s;
+    }
+
+    .menu-item i {
+      width: 18px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 196, 0, .15);
+    }
+
+    .menu-item.active {
+      background: #ffc400;
+      color: #071738;
+    }
+     /* Logout area */
+.logout-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 16px 25px;
+}
+
+/* Horizontal line */
+.logout-section::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 0 25px;
+}
+
+/* Logout button */
+.logout-btn {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Logout icon */
+.logout-icon {
+    font-size: 25px;
+    line-height: 1;
+}
+
+/* Hover */
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+.logout {
+      margin-top: 250px;
+      border-top: 1px solid #53627b;
+      padding: 20px 18px 5px;
+      padding-bottom: 50px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      gap: 140px;
+      align-items: center;
+}
+
+    .logout span {
+    font-size: 20px;
+    color: #fff;
+    margin-right: 12px;
+}
+
+     /* Top bar */
+.topbar {
+    height: 84px;
+    background: #fff;
+    border-bottom: 1px solid #e7eaf0;
+    display: flex;
+    align-items: center;
+    padding: 0 42px 0 25px;
+    gap: 80px;
+}
+
+.company-logo {
+    width: 61px;
+    height: 61px;
+    border: 1px solid #39c96b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0c8e40;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+}
+.search-box {
+            width: 520px;
+            height: 48px;
+            border-radius: 30px;
+            background: #f4f6fb;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            margin-left: 10px;
+            font-size: 15px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .settings {
+            font-size: 22px;
+        }
+
+       .user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        } 
+
+        
+
+/* Content */
+.content {
+    padding: 40px 48px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.page-heading p {
+    color: #5e6470;
+    font-size: 14px;
+}
+
+.add-btn {
+    border: none;
+    background: #ffc400;
+    color: #171717;
+    padding: 14px 25px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #eeb600;
+}
+.avatarinitials{
+    background: #071738;
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+ /* Cards */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+        }
+
+        .card h3 {
+            color: #555;
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .card h2 {
+            color: #081f49;
+            font-size: 30px;
+        }
+
+        .card span {
+            float: right;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #fff5d6;
+            color: #a57900;
+            font-size: 13px;
+        }
+
+        /* Toolbar */
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+            margin-bottom: 25px;
+        }
+
+        .toolbar select {
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .toolbar p {
+            color: #555;
+        }
+
+        /* Table */
+
+        table {
+            width: 100%;
+            background: #fff;
+            border-collapse: collapse;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+        }
+
+        thead {
+            background: #f5f8fc;
+            position: relative;
+            left:10px
+        }
+
+        th {
+            padding: 20px;
+            text-align: left;
+            color: #444;
+        }
+
+        td {
+            padding: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;           
+             vertical-align: auto;
+        }
+
+        td:first-child {
+            display: flex;
+            align-items: center;
+            gap:10px;
+        }
+       td img{
+        font-size: medium;
+        display: flex;
+
+       }
+/* EMPLOYEE */
+
+.employee {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.employee strong {
+    display: block;
+    font-size: 14px;
+}
+
+.employee small {
+    display: block;
+    color: #555b65;
+    font-size: 11px;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #263e52;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.avatar.female {
+    background: #76595a;
+}
+
+.employee-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .blue-avatar {
+      background: #d4e4ff;
+      color: #31568c;
+    }
+
+    .yellow-avatar {
+      background: #ffdc82;
+      color: #715500;
+    }
+
+    .employee-name {
+      font-weight: 600;
+      color: #292d34;
+    }
+
+        td strong {
+            color: #081f49;
+        }
+
+        td p {
+            color: #777;
+            font-size: 14px;
+        }
+        td span{
+            color: red;
+        }
+       td i {
+         color: #0b2f6b;
+         cursor: pointer;
+         font-size: 18px;
+        }
+
+        tr:hover {
+            background: #fafafa;
+        }
+/* Status */
+
+.status {
+    width: fit-content;
+    min-width: 67px;
+
+    padding: 7px 12px;
+
+    border-radius: 18px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    line-height: 16px;
+}
+
+.status span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.active-status {
+    background: #d9f8e6;
+    color: #15844a;
+}
+
+.active-status span {
+    background: #20a65a;
+}
+
+.leave-status {
+    background: #fff0c9;
+    color: #a85b00;
+}
+
+.leave-status span {
+    background: #f5a900;
+}
+
+
+/* ================= PAGINATION ================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  left: 50px;
+}
+.entries {
+      color: #555d6c;
+      font-size: 16px;
+    }
+
+.page {
+  width: 44px;
+  height: 50px;
+  border: 1px solid #e5e8ee;
+  border-radius: 8px;
+  background: #fff;
+  color: #151923;
+  font-size: 13px;
+  cursor: pointer;
+}
+.pages {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    position: relative;
+    left:20px;
+
+
+}
+.pages button {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    width: 28px;
+    height: 34px;
+
+    cursor: pointer;
+    color: #252b35;
+    position: relative;
+    left: 500px;
+    font-size: 12px;
+}
+
+.pages .current {
+    background: #806400;
+    color: white;
+   border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    font-weight: bold;
+}
+.page span{
+    padding: 0 4px;
+    position: relative;
+    left: 500px;
+}
+
+/* Responsive */
+
+        @media(max-width:1100px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width:768px) {
+
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            header input {
+                width: 100%;
+            }
+
+            .page-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            main {
+                padding: 20px;
+            }
+        .green{
+            color:green;
+        }
+         .red{
+            color: red; 
+        }
+        .pagination{
+            min-width: 850px;
+        }
+    }
+    </style>  
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Sidebar -->
+     <aside class="sidebar">
+
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-table-list"></i>
+        </div>
+        <div class="brand-name">VIS</div>
+      </div>
+
+      <div class="product-name">
+        <h2>PaySlip</h2>
+        <span>Management</span>
+      </div>
+
+      <nav class="menu">
+
+        <a href="Dashboard.html" class="menu-item">
+          <i class="fa-solid fa-border-all"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="Employees Directory.html" class="menu-item active">
+          <i class="fa-solid fa-users"></i>
+          <span>Employees</span>
+        </a>
+
+        <a href="Generate payslips.html" class="menu-item">
+          <i class="fa-regular fa-money-bill-1"></i>
+          <span>Generate Payslip</span>
+        </a>
+
+        <a href="Payslip History.html" class="menu-item">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>Payslip History</span>
+        </a>
+
+        <a href="Email Log.html" class="menu-item ">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Email Log</span>
+        </a>
+    
+      <div class="logout-section">
+                <a href="#" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                   <span> Logout</span>
+                </a>
+</div>
+      </nav>
+     </aside>
+      <!-- Main -->
+    <main class="main">
+
+        <!-- Top bar -->
+        <header class="topbar">
+
+            <img src="image.jfif" class="company-logo">
+               
+
+            <div class="search-box">
+             <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search employees or reports...">
+            </div>
+
+            <div class="header-right">
+          <i class="fa-solid fa-gear settings"></i>
+
+                   <div class="user">
+                    
+                    <div>
+                        <h4>Admin user</h4>
+                        <p>Super Admin</p>
+                    </div>
+                <img src="https://i.pravatar.cc/50?img=60" >   
+            </div>
+                  
+        </header>
+         <!-- CONTENT -->
+      <section class="content">
+
+        <div class="page-heading">
+
+          <div>
+            <h2>Employee Directory</h2>
+            <p>Manage and organize your global workforce with precision.</p>
+          </div>
+
+                <!--title-->
+          <button class="add-btn">
+            <span> + Add Employee</span>
+            
+          </button>
+
+        </section>
+            <!-- Statistics -->
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>TOTAL STAFF</h3>
+
+                    <h2>1,284</h2>
+
+                    <span>+12%</span>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>ACTIVE NOW</h3>
+
+                    <h2>942</h2>
+
+                    <span>Live</span>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>DEPARTMENTS</h3>
+
+                    <h2>18<span>ⓢ</span></h2>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>AVG. SALARY</h3>
+
+                    <h2>₹30.4k<span>₹</span></h2>
+
+                </div>
+
+            </div>
+
+            <!-- Filter -->
+
+            <div class="toolbar">
+
+                <select>
+
+                    <option>All Department</option>
+                    <option>Product Design</option>
+                    <option>Engineering</option>
+                    <option>Marketing</option>
+                    <option>HR</option>
+                    <option>Legal</option>
+
+                </select>
+
+                <p>Showing 1-10 of 1,284 employees</p>
+
+            </div>
+
+            <!-- Employee Table -->
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        
+                        <th>Employee</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Salary</th>
+                        <th>Status</th>
+                        <th class="center-align">Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                        <div class="employee">                     
+                            <img src="https://i.pravatar.cc/50?img=10" alt="avatar" class="avatar">
+                            
+                            <div>
+                            
+                                <strong>Julian Rossi</strong>
+
+                                <p>julian.r@vistechnologies.com</p>
+
+                            </div>
+
+                        </td>
+
+                        <td>Product Design</td>
+
+
+                        <td>Senior UI/UX Designer</td>
+
+                        <td>₹9,200</td>
+
+                        <td><span class="status active-status">Active</span></td>
+
+                        <td>
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <div class="employee">
+                            <img src="https://i.pravatar.cc/50?img=20" alt="avatar" class="avatar">
+
+                            <div>
+                                
+
+                                <strong>Elena Vance</strong>
+
+                                <p>elena.v@vistechnologies.com</p>
+
+                            </div>
+
+                        </td>
+
+                        <td>Engineering</td>
+
+                        <td>Lead Cloud Engineer</td>
+
+                        <td>₹12,500</td>
+
+                        <td><span class="status active-status">Active</span></td>
+
+                        <td>
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                         <div class="employee">
+
+                <div class="employee-avatar blue-avatar">
+                             MK
+                </div>
+                        
+                                  <div class="employee-name">
+
+                                <strong>marcuskane</strong>
+
+                                <p>m.kane@vistechnologies.com</p>
+
+                            </div>
+
+                        </td>
+
+                        <td>Marketing</td>
+
+
+                        <td>GrowthSpecials</td>
+
+                        <td>₹7,800</td>
+
+                        <td><span class="status onLeave">onLeave</span></td>
+
+                        <td>
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td>
+                           <div class="employee">
+                            <img src="https://i.pravatar.cc/50?img=30" alt="avatar" class="avatar">
+
+                     <div>
+                 <strong>sarahjenkis</strong>
+
+                    <p>sarah.j@vistechnologies.com</p>
+
+                            </div>
+
+                        </td>
+
+                        <td>HR</td>
+
+                        <td>People operation</td>
+
+                        <td>₹6,400</td>
+
+                        <td><span class="status active-status">Active</span></td>
+
+                        <td>
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </td>
+
+                    </tr>
+                   
+                      <tr>
+
+                        <td>
+                        <div class="employee">
+                            <img src="https://i.pravatar.cc/50?img=40" alt="avatar" class="avatar">
+                       <div>
+                 <strong>ArthurPendragon</strong>
+
+                    <p>a.p@vistechnologies.com</p>
+
+                            </div>
+
+                        </td>
+
+                        <td>Legal</td>
+
+                        <td>General counsel</td>
+
+                        <td>₹15,200</td>
+
+                        <td><span class="status active-status">Active</span></td>
+
+                        <td>
+
+                            <i class="fa-solid fa-eye"></i>
+                        </td>
+                      </tr>
+                </tbody>
+
+            </table><br><br>
+         <!-- PAGINATION -->
+        <div class="pagination">
+
+          <div class="entries">
+            Showing 10 of 1,284 entries
+          </div>
+
+          <div class="pages">
+            <button class="page">|‹</button>
+            <button class="page">‹</button>
+            <button class="page active">1</button>
+            <button class="page">2</button>
+            <button class="page">3</button>
+
+            <span class="dots">-</span>
+
+            <button class="page">128</button>
+            <button class="page">›</button>
+            <button class="page">›|</button>
+          </div>
+
+        </div>
+</section>
+</main>
+<script>
+           
+            // Sidebar Active Menu
+            const menuItems = document.querySelectorAll(".sidebar ul li");
+
+            menuItems.forEach(item => {
+                item.addEventListener("click", function () {
+                    menuItems.forEach(menu => menu.classList.remove("active"));
+                    this.classList.add("active");
+                });
+            });
+
+            // Employee Search
+            const searchBox = document.querySelector("header input");
+
+            searchBox.addEventListener("keyup", function () {
+
+                let value = this.value.toLowerCase();
+
+                let rows = document.querySelectorAll("tbody tr");
+
+                rows.forEach(row => {
+
+                    let employee =
+                        row.cells[0].innerText.toLowerCase();
+
+                    if (employee.includes(value)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+
+                });
+
+            });
+
+            // Department Filter
+            const departmentFilter = document.querySelector(".toolbar select");
+
+            departmentFilter.addEventListener("change", function () {
+
+                let department = this.value.toLowerCase();
+
+                let rows = document.querySelectorAll("tbody tr");
+
+                rows.forEach(row => {
+
+                    let rowDepartment =
+                        row.cells[1].innerText.toLowerCase();
+
+                    if (
+                        department === "all departments" ||
+                        rowDepartment.includes(department)
+                    ) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+
+                });
+
+            });
+
+            // Add Employee Button
+            const addButton = document.querySelector(".page-title button");
+
+            addButton.addEventListener("click", () => {
+
+                let name = prompt("Enter Employee Name");
+
+                if (name == null || name.trim() === "") return;
+
+                let department = prompt("Department");
+
+                let designation = prompt("Designation");
+
+                let salary = prompt("Salary");
+
+                const tbody = document.querySelector("tbody");
+
+                const row = document.createElement("tr");
+            });
+            function attachViewEvents() {
+
+                const viewButtons = document.querySelectorAll(".fa-eye");
+
+                viewButtons.forEach(button => {
+
+                    button.onclick = function () {
+
+                        let row = this.closest("tr");
+
+                        alert(
+                            "Employee : " + row.cells[0].innerText +
+                            "\nDepartment : " + row.cells[1].innerText +
+                            "\nDesignation : " + row.cells[2].innerText +
+                            "\nSalary : " + row.cells[3].innerText
+                        );
+
+                    };
+
+                });
+
+            }
+
+            attachViewEvents();
+
+            // Settings
+            const settings = document.querySelector(".fa-gear");
+
+            settings.addEventListener("click", () => {
+                alert("Settings Page");
+            });
+
+            // Admin Profile
+            const profile = document.querySelector(".profile img");
+
+            profile.addEventListener("click", () => {
+                alert("Admin User\nRole : Super Admin");
+            });
+          
+          // Run this block after your dashboard content finishes loading
+document.addEventListener("DOMContentLoaded", () => {
+    // Strips out horizontal overflow behavior from the document view frame
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+});
+          
+        </script>
+
+</body>
+</html>

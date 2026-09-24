@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Email log Delivery</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            
+        }
+
+        body {
+            background: #f5f7fc;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+       .sidebar {
+      width: 300px;
+      min-height: 100vh;
+      background: #00102e;
+      color: white;
+      padding: 35px 18px;
+      flex-shrink: 0;
+    }
+     .logo {
+      font-size: 22px;
+      color:#ddd;
+      font-weight: 700;
+      margin: 10px 18px 45px;
+    }.nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    
+    .nav-item {
+      padding: 20px  10px;
+      border-radius: 7px;
+      color: #d6deec;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background: #102446;
+      padding: auto;
+    }
+
+    .nav-item.active {
+      background: #172a4b;
+      color: white;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px 45px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: #ffc400;
+      color: #071738;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .brand-name {
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ffc107;
+      
+    }
+
+    .product-name {
+      padding: 0 14px;
+      margin-top: -22px;
+      margin-bottom: 25px;
+    }
+
+    .product-name h2 {
+      color: #ffc400;
+      font-size: 25px;
+      margin-bottom: 2px;
+    }
+
+    .product-name span {
+      color: #ddd;
+      font-size: 14px;
+      letter-spacing: .5px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .menu-item {
+      height: 48px;
+      padding: 0 17px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 13px;
+      font-size: 16px;
+      transition: .2s;
+    }
+
+    .menu-item i {
+      width: 18px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 196, 0, .15);
+    }
+
+    .menu-item.active {
+      background: #ffc400;
+      color: #071738;
+    }
+    /* Logout area */
+.logout-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 16px 25px;
+}
+
+/* Horizontal line */
+.logout-section::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 0 25px;
+}
+
+/* Logout button */
+.logout-btn {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Logout icon */
+.logout-icon {
+    font-size: 25px;
+    line-height: 1;
+}
+
+/* Hover */
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+     .logout {
+      margin-top: 250px;
+      border-top: 1px solid #53627b;
+      padding: 20px 18px 5px;
+      padding-bottom: 50px;
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      gap: 140px;
+      align-items: center;
+}
+
+    .logout span {
+    font-size: 20px;
+    color: #fff;
+    margin-right: 12px;
+}
+    /* Main */
+
+        .main {
+            flex: 1;
+        }
+
+        /* Header */
+
+        .header {
+            background: #fff;
+            padding: 18px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    .company-logo {
+    width: 61px;
+    height: 61px;
+    border: 1px solid #39c96b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0c8e40;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+}
+        .search {
+            width: 500px;
+            background: #f2f4f7;
+            padding: 12px 18px;
+            border-radius: 30px;
+        }
+
+        .search input {
+            width: 90%;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        /* Content */
+
+        .content {
+            padding: 35px;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title h1 {
+            font-size: 42px;
+            color: #111;
+        }
+
+        .title p {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: #ffc107;
+            color: #000;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        /* Cards */
+
+        .cards {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, .08);
+        }
+
+        .card i {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .card span{
+            font-size: 10px;
+            position: relative;
+            left: 150px;
+
+        }
+
+        .card h2 {
+            margin-top: 12px;
+            color: #111;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: #1f6fff;
+        }
+
+        /* Table */
+
+        .table-box {
+            margin-top: 35px;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, .08);
+        }
+
+        .table-title {
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f3f4f7;
+            padding: 18px;
+            text-align: left;
+        }
+
+        td {
+            padding: 18px;
+            border-top: 1px solid #eee;
+        }
+        .recipient {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .employee-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .blue-avatar {
+      background: #d4e4ff;
+      color: #31568c;
+    }
+
+    .yellow-avatar {
+      background: #ffdc82;
+      color: #715500;
+    }
+      .date  {
+      width: 35px;
+      height: 35px;
+      background: #dfe7ff;
+      color: #172657;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }  
+
+    .recipient-info strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .recipient-info span {
+      color: #5d6470;
+      font-size: 15px;
+    }
+
+.status {
+    background: #d9f7df;
+    color: green;
+    padding: 6px 15px;
+     border-radius: 20px;
+        }
+     .subject {
+      max-width : initial;
+      line-height: 1.6;
+      color: #454b56;
+    }
+        .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d9f9e4;
+      color: #0b963f;
+      padding: 7px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0b963f;
+    }
+    .status.bounced {
+      background: #ffe1e1;
+      color: #e03434;
+    }
+
+    .status.bounced::before {
+      background: #e03434;
+    }
+    .status.opened {
+      background: #ffe1e1;
+      color:blue;
+    }
+
+    .status.opened::before {
+      background:blue;
+    }
+      .action {
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+    <!----pagination---->
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  }
+ .logs {
+      color: #555d6c;
+      font-size: 14px;
+}    
+
+.page {
+  width: 44px;
+  height: 50px;
+  border: 1px solid #e5e8ee;
+  border-radius: 8px;
+  background: #fff;
+  color: #151923;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  left: 800px;
+  bottom: 20px;
+}
+.showing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    left: 30px;
+    top: 10px;
+}
+
+.pages button {
+    
+border: none;
+    background: transparent;
+
+    width: 28px;
+    height: 34px;
+
+    cursor: pointer;
+    color: #252b35;
+    position: relative;
+    left: 500px;
+    font-size: 12px;
+}
+
+.page:hover {
+  background: #f1f4f8;
+  
+}
+
+.page.active {
+  background: #00102e;
+  color: #fff;
+  border-color: #00102e;
+  font-weight: 700;
+  
+}
+
+.page.arrow {
+  width: 26px;
+  font-size: 23px;
+  line-height: 1;
+  
+}
+
+.page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+        @media(max-width:900px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .search {
+                width: 250px;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        .pagination{
+            min-width: 850px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+    <!--sidebar-->
+        <div class="sidebar">
+
+           <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-table-list"></i>
+        </div>
+               <div class="brand-name">VIS</div>
+        </div>
+               <div class="product-name">
+               <h2>payslip</h2>
+                <span>Management</span>
+            </div>
+
+            <nav class="menu">
+             <a href="Dashboard.html" class="menu-item">
+          <i class="fa-solid fa-border-all"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="Employees Directory.html" class="menu-item ">
+          <i class="fa-solid fa-users"></i>
+          <span>Employees</span>
+        </a>
+
+        <a href="Generate payslips.html" class="menu-item">
+          <i class="fa-regular fa-money-bill-1"></i>
+          <span>Generate Payslip</span>
+        </a>
+
+        <a href="Payslip History.html" class="menu-item">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>Payslip History</span>
+        </a>
+
+        <a href="Email Log.html" class="menu-item active">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Email Log</span>
+        </a>
+       <div class="logout-section">
+                <a href="Dashboard.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                   <span> Logout</span>
+                </a>
+       </div>
+            </nav>
+        </div>
+    </aside>
+<!---main--->
+        <div class="main">
+
+            <div class="header">
+                 <img src="image.jfif" class="company-logo">
+                           
+                <div class="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search employees or reports...">
+                </div>
+
+                <div class="user">
+                    <i class="fa-solid fa-gear fa-xl"></i>
+                    <div>
+                        <b>Admin User</b><br>
+                        <small>Super Admin</small>
+                    </div>
+
+                <img src="https://i.pravatar.cc/50?img=60" alt="admin">
+                </div>
+
+            </div>
+
+            <div class="content">
+
+                <div class="title">
+
+                    <div>
+                        <h1>Email Delivery Log</h1>
+                        <p>Audit trail for all automated payroll communications.</p>
+                    </div>
+
+                    <button class="btn">
+                        <i class="fa-solid fa-download"></i>
+                         Export CSV
+                    </button>
+
+                </div>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <i class="fa-solid fa-paper-plane blue"><span class="">+12% vs last month</span></i>
+                        
+                        <p>Total Sent</p>
+                        <h2>1,284</h2>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa-solid fa-circle-check green"><span> 98.2% Rate</span></i>
+                        
+                        <p>Delivered</p>
+                        <h2>1,261</h2>
+                    </div>
+
+                    <div class="card">
+                        <i class="fa-solid fa-circle-xmark red"><span> Check Logs</span></i>
+                        
+                        <p>Failed</p>
+                        <h2>23</h2>
+                    </div>
+
+                </div>
+
+                <div class="table-box">
+
+                    <div class="table-title">
+                        Recent Transactions
+                    </div>
+
+                    <table>
+
+                        <tr>
+                            <th>Recipient</th>
+                            <th>Subject</th>
+                            <th>Sent Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            <div class="recipient">   
+                            <div class="employee-avatar blue-avatar">JD</div> 
+                            
+                            <div class="recipient-info">
+                               
+                                <strong>John Doe</strong>
+                              
+                            <span>John.doe@vistech.com</span>
+                            </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            September 2023 Payslip - VIS Technologies
+                        </td>
+
+                        <td>
+                            Oct24,2023<br>
+                            09:15 AM
+                        </td>
+
+                        <td>
+                            <span class="status delived">Delivered</span>
+                        </td>
+
+                        <td class="action">
+                            <i class="fa-solid fa-eye"></i>
+                        </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="recipient">
+                            <div class="employee-avatar yellow-avatar ">AS</div>
+
+                            <div class="recipient-info">
+                                <strong>Alice Smith</strong>
+                               <span>alice.smith@vistech.com</span>
+                               </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                October 2023 Payslip-VIS Technologies
+                            </td>
+
+                            <td>
+                                oct24,2023<br>
+                                09:16 AM
+                            </td>
+
+                            <td>
+                                <span class="status bounced">Bounced</span>
+                            </td>
+
+                            <td class="action">
+                                <i class="fa-solid  fa-eye"></i>
+                            </td>
+
+                        </tr>
+                     <tr>
+                        <td>
+                    <div class="recipient">
+                  <div class="employee-avatar blue-avatar">MB</div>
+
+                         <div class="recipient-info">
+                        <strong>Michael Brown</strong>
+                    <span>m.brown@vistech.com</span>
+                      </div>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    September 2023 Payslip - VIS Technologies
+                    </td>
+
+                  <td> 
+                    
+                      Oct24,2023 <br>
+                        09:18AM
+                    
+                  </td>
+
+                  <td>
+                    <span class="status opened">opened</span>
+                  </td>
+
+                  <td class="action">
+                    <i class="fa-solid fa-eye"></i>
+                  </td>
+
+                </tr>
+                <tr>
+                        <td>
+                    <div class="recipient">
+                  <div class="employee-avatar yellow-avatar">RM</div>
+
+                         <div class="recipient-info">
+                        <strong>Robert Wilson</strong>
+                    <span>r.wilson@vistech.com</span>
+                      </div>
+
+                    </div>
+                  </td>
+
+                  <td>
+                    September 2023 Payslip - VIS Technologies
+                    </td>
+
+                  <td> 
+                    
+                      Oct24,2023 <br>
+                        09:20AM
+                    
+                  </td>
+                  <td>
+                    <span class="status delivered">Delivered</span>
+                  </td>
+
+                  <td class="action">
+                    <i class="fa-solid fa-eye"></i>
+                  </td>
+                </tr>
+            </table>
+
+                </div>
+
+            </div>
+
+         
+
+<div class="card-footer">
+  <div class="showing">
+    Showing <strong id="range">1 - 10</strong> of <strong>1,284</strong> logs
+  </div>
+
+  <nav class="pagination">
+    <button class="page arrow" id="prev" onclick="changePage(-1)">‹</button>
+
+    <button class="page active" onclick="goToPage(1)">1</button>
+    <button class="page" onclick="goToPage(2)">2</button>
+    <button class="page" onclick="goToPage(3)">3</button>
+
+    <button class="page arrow" id="next" onclick="changePage(1)">›</button>
+  </nav>
+</div>
+<script>
+        
+
+        // Export CSV Button
+        const exportBtn = document.querySelector(".btn");
+
+        if (exportBtn) {
+            exportBtn.addEventListener("click", function () {
+                alert("CSV Export Started Successfully!");
+            });
+        }
+
+        // Search Function
+        const searchInput = document.querySelector(".search input");
+
+        if (searchInput) {
+            searchInput.addEventListener("keyup", function () {
+
+                let filter = searchInput.value.toLowerCase();
+                let rows = document.querySelectorAll("table tbody tr");
+
+                rows.forEach(function (row) {
+
+                    let text = row.textContent.toLowerCase();
+
+                    if (text.indexOf(filter) > -1) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+
+                });
+
+            });
+        }
+
+        // View Transaction
+        const viewButtons = document.querySelectorAll(".action");
+
+        viewButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                let row = this.parentElement;
+
+                let recipient = row.cells[0].innerText;
+                let subject = row.cells[1].innerText;
+                let date = row.cells[2].innerText;
+                let status = row.cells[3].innerText;
+
+                alert(
+                    "Transaction Details\n\n" +
+                    "Recipient : " + recipient +
+                    "\nSubject : " + subject +
+                    "\nSent Date : " + date +
+                    "\nStatus : " + status
+                );
+
+            });
+
+        });
+
+        // Card Animation
+        function animateCards() {
+
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(function (card, index) {
+
+                card.style.opacity = "0";
+                card.style.transform = "translateY(30px)";
+
+                setTimeout(function () {
+
+                    card.style.transition = "0.6s";
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+
+                }, index * 250);
+
+            });
+
+        }
+
+        // Highlight Active Sidebar Menu
+        const menuItems = document.querySelectorAll(".sidebar ul li");
+
+        menuItems.forEach(function (item) {
+
+            item.addEventListener("click", function () {
+
+                menuItems.forEach(function (menu) {
+                    menu.classList.remove("active");
+                });
+
+                this.classList.add("active");
+
+            });
+
+        });
+
+        // Current Date and Time
+        function updateDateTime() {
+
+            const now = new Date();
+
+            console.log("Current Time: " + now.toLocaleString());
+
+        }
+
+        setInterval(updateDateTime, 1000);let currentPage = 1;
+
+  const totalLogs = 1284;
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(totalLogs / itemsPerPage);
+function goToPage(page) {
+    if (page < 1 || page > totalPages) return;
+
+    currentPage = page;
+
+    const start = (currentPage - 1) * itemsPerPage + 1;
+    const end = Math.min(currentPage * itemsPerPage, totalLogs);
+
+    document.getElementById("range").textContent =
+      `${start} - ${end}`;
+
+    document.querySelectorAll(".pagination .page:not(.arrow)")
+      .forEach(button => button.classList.remove("active"));
+
+    const buttons = document.querySelectorAll(
+      ".pagination .page:not(.arrow)"
+    );
+
+    buttons.forEach(button => {
+      if (Number(button.textContent) === currentPage) {
+        button.classList.add("active");
+      }
+    });
+
+    document.getElementById("prev").disabled = currentPage === 1;
+    document.getElementById("next").disabled =
+      currentPage === totalPages;
+
+    // Here you can load the data for the selected page
+    console.log("Loading page:", currentPage);
+  }
+
+  function changePage(direction) {
+    goToPage(currentPage + direction);
+  }
+// Run this block after your dashboard content finishes loading
+document.addEventListener("DOMContentLoaded", () => {
+    // Strips out horizontal overflow behavior from the document view frame
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+});
+  
+  goToPage(1);
+</script>
+</body>
+
+</html>
